@@ -1,14 +1,14 @@
 * {
-	vertical-align: baseline;
+	vertical-align: top;
 	border: 0 none;
 	outline: 0;
 	padding: 0;
-	margin: 10px;
-  color: DarkGray;
+	margin: 0px;
   border-radius: 15px;
+	column-width: auto;
 	}
 #background{
-  background-width: 970px;
+  width: 970px;
   background-color: #2F4F4F;
   margin: 0px;
   border-radius: 0px;
@@ -16,36 +16,56 @@
 }
 #header{
   width: 940px;
-  padding: 20px;
-  display: block;
+  display: inline-block;
   background-color: #B22222;
 	margin: 10px;
+	font-size: 2.5em;
+	font-weight: bold;
+	margin-bottom: 30px;
 	position: relative;
 	top: 10px;
+	padding: 15px;
+  color: DarkGray;
 }
 #navigation{
   width: 200px;
-  display: block;
-  margin: 20px 15px 0px 10px;
+  display: inline-block;
+  margin: 0px 15px 0px 10px;
 	background-color: green;
 }
 #main_content{
   display: inline-block;
 	background-color: DarkBlue;
-	margin: 10px;
+	width: 710px;
+	margin: 0px 10px 0px 0px;
 }
 #footer{
   display: block;
 	background-color: Gray;
-	margin: 10px;
+	margin: 30px 10px 30px 10px;
+	position:relative;
+	bottom: 10px;
+	margin-bottom: 40px;
 }
-#unclickedLinkAnalog{
+#topList {
+	list-style-position: outside;
+	margin-left: 20px;
+}
+#topList ul{
+  padding-left: 15px;
+	padding-right: 15px;
+	list-style-position: inherit;
+	list-style-type: circle;
+}
+.stdText{
+	padding: 20px;
+	font-size: 20px;
+	color: LightGray;
+}
+.unclickedLinkAnalog{
   color: DarkTurquoise;
   text-decoration: underline;
 }
-#topList{
-
-}
-#bottomList{
-  text-indent: 25px;
+#examp{
+	color: #5d3ded;
 }
