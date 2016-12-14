@@ -1,0 +1,51 @@
+* {
+	vertical-align: baseline;
+	border: 0 none;
+	outline: 0;
+	padding: 0;
+	margin: 10px;
+  color: DarkGray;
+  border-radius: 15px;
+	}
+#background{
+  background-width: 970px;
+  background-color: #2F4F4F;
+  margin: 0px;
+  border-radius: 0px;
+	background-repeat: no-repeat;
+}
+#header{
+  width: 940px;
+  padding: 20px;
+  display: block;
+  background-color: #B22222;
+	margin: 10px;
+	position: relative;
+	top: 10px;
+}
+#navigation{
+  width: 200px;
+  display: block;
+  margin: 20px 15px 0px 10px;
+	background-color: green;
+}
+#main_content{
+  display: inline-block;
+	background-color: DarkBlue;
+	margin: 10px;
+}
+#footer{
+  display: block;
+	background-color: Gray;
+	margin: 10px;
+}
+#unclickedLinkAnalog{
+  color: DarkTurquoise;
+  text-decoration: underline;
+}
+#topList{
+
+}
+#bottomList{
+  text-indent: 25px;
+}
