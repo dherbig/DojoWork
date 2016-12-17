@@ -1,0 +1,241 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	font-family: helvetica;
+}
+a:link, a:visited {
+		color: inherit;
+		text-decoration: none;
+}
+body {
+	background-color: #fcfefd;
+	width: 600px;
+	padding: 20px 0px 0px 20px;
+}
+#header {
+	background: linear-gradient(#fefefe, #e8e8e8);
+	margin-bottom: 20px;
+	font-weight: bold;
+	width: 600px;
+	margin: auto;
+	height:40px;
+	border-radius: 5px;
+	font-size: .9em;
+}
+#navBar {
+	display: inline-block;
+	vertical-align: top;
+
+}
+#navBar li {
+	display: inline-block;
+	text-decoration: none;
+	vertical-align: middle;
+	border-right: 1px solid #ebebeb;
+	padding: 9px 15px;
+	/*text-align: middle;*/
+
+}
+#navBar li a {
+	font-size: .75em;
+}
+.mainLogo {
+	padding: 0px;
+	display: inline-block;
+	height: auto;
+	border-radius: 5px 0px 0px 5px;
+}
+#form1 {
+	display: inline-block;
+	vertical-align: top;
+
+	margin: 6px 20px 0px 37px;
+}
+.searchBox {
+	background: white url(imgs/magIconGray.png) no-repeat scroll left center;
+	background-size: 13px;
+	background-position: 6px 3px;
+	height: 19px;
+  margin:0;
+	border: 1px solid #efefef;
+	border-radius: 25px 0px 0px 20px;
+}
+#go {
+	background: url(imgs/menu_icon2.png) scroll right center;
+	background-size: cover;
+	background-position: -2px 0px;
+	vertical-align: middle;
+	width: 21px;
+	height: 21px;
+	position: relative;
+	right: 5px;
+	top: 1px;
+	margin: 2px 0px 2px 0px;
+	border: 1px solid #efefef;
+	border-radius: 0px 25px 25px 0px;
+}
+#splashZone {
+	margin: 10px auto 0px auto;
+	width: 600px;
+}
+#contentNav {
+	height: 25px;
+	background: linear-gradient(#4b4b4a, #353535);
+	border-radius: 0px 0px 5px 5px;
+	position: relative;
+	top: -4px;
+	width: auto;
+	padding-left: 10px;
+	margin-bottom: 15px;
+}
+#contentNav li {
+	display: inline-block;
+	padding: 0px 3px;
+}
+.white {
+	color: white;
+	font-size: 0.1em;
+}
+.blue {
+	color: #8bbad4;
+	font-size: 0.1em;
+}
+.gray {
+	color: #5a5a5a;
+	font-size: 1em;
+	font-weight: bold;
+
+	position: relative;
+	top: 4px;
+}
+.tilt {
+	transform: rotate(20deg);
+}
+
+#footer {
+	border: 1px solid #f6f7f6;
+	color: #b5b5b5;
+	border-radius: 5px 5px 0px 0px;
+	background-color: white;
+}
+.footerP {
+	display: inline-block;
+	font-size: 1.3em;
+	border-right: 1px solid #f6f7f6;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding:20px;
+	width: auto;
+}
+.rightCarrot {
+	display: inline-block;
+	border: none;
+	padding-left: 50px;
+	border-right: none;
+}
+#footer button {
+	display: inline-block;
+	background: linear-gradient(#72a1bf,#4b7592);
+	border: none;
+	border-radius: 5px;
+	font-size: .75em;
+	vertical-align: middle;
+	color: white;
+	padding: 10px;
+	margin-left: 15px;
+}
+#fungusBox{
+	padding: 15px;
+	background: linear-gradient(#fdfdfd,#e5e5e5);
+	border: 2px solid #e2e2e2;
+}
+.footFungus {
+	display:inline-block;
+	max-width: 23%;
+	border-right: 1px solid #e2e2e2;
+	font-size: 0.5em;
+	margin-left:9px;
+	text-align: left;
+	vertical-align: top;
+}
+.cornerIcon {
+	display: inline-block;
+	width: auto;
+	background: transparent;
+	vertical-align: middle;
+	mix-blend-mode: multiply;
+}
+.genHead {
+	text-align: center;
+	font-size: 1.4em;
+	margin: 0px auto 10px auto;
+	margin-bottom: 10px;
+	display: inline-block;
+	margin-top: 3px;
+}
+.text {
+	margin:5px 0px;
+	max-width: 99%;
+}
+.botImg{
+	text-align:center;
+	width: 95%;
+	position: relative;
+	left: -3px;
+	mix-blend-mode: multiply;
+}
+.buttButton {
+	background: linear-gradient(#60b3f1,#6ca2c7);
+	margin: 0px auto;
+	width: 90%;
+	height: 20px;
+	color: white;
+	border-radius: 5px;
+}
+.final {
+	margin-right: 0px;
+	border-right: none;
+}
+.first {
+	margin-left: 0px;
+}
+#boxFloor {
+	padding: 15px;
+	border: 2px solid #e2e2e2;
+	background-color: #e5e5e5;
+	border-radius: 0px 0px 5px 5px;
+}
+.footerBox {
+	margin-top:20px;
+	background: transparent;
+	margin-left: 15px;
+	vertical-align: top;
+	width: 13%;
+	display: inline-block;
+}
+.footerBox h4 {
+	font-size: .5em;
+	color:black;
+	max-width: 13%;
+}
+.endList {
+	margin-top: 10px;
+	padding-top: 10px;
+	border-top: 1px solid #e2e2e2;
+	list-style: none;
+	font-size: .4em;
+	line-height: 2em;
+}
+.email {
+	color: #8395a0;
+	text-decoration: underline;
+	text-align: left;
+}
+.aboutBar {
+	display: block;
+	margin: 20px 0px 0px 5px;
+	padding: 10px 10px 0px 10px;
+	font-size: .4em;
+	color: black;
+	border-top: 1px solid #e2e2e2;
+}

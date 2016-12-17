@@ -2,36 +2,37 @@
 		margin: 0px;
 		padding: 0px;
 }
-body {
+#wrapper {
 	width: 900px;
+	margin: 5px 10px;
 }
 #dataImg {
-	margin: 0px 0px 10px 15px;
+	margin-left: 10px;
 	display: inline-block;
 }
 #header{
 	background: linear-gradient(#eff1ed, white);
+	height: 80px;
 }
 #header p {
 	display: inline-block;
 	vertical-align: top;
 	font: normal normal bold 120% serif;
-	margin: 0px 0px 0px 0px;
+	margin: 44px 0px 0px 361px;
 }
 nav {
 	background: linear-gradient(white, #eff1ed, white);
-	border: 1px solid black;
-	width: 897px;
-	padding: 10px 0px;
+	border: 2px solid black;
+	padding: 8px 0px;
 }
 nav a{
-	border-right: 1px solid black;
+	border-right: 2px solid black;
 	font-size: 83%;
 	text-decoration: underline;
 	color: #4a1ff6;
 	width: 75px;
 	margin: 0px 0px 0px 0px;
-	padding: 11px 35px;
+	padding: 12px 35px;
 }
 #contentHolder {
 	height: 684px;
@@ -46,14 +47,29 @@ nav a{
 	display:inline-block;
 	vertical-align: top;
 	margin-top: 15px;
+	display: inline-block;
+	font-size: 80%;
 }
 .box h1 {
-		padding-left: 5px;
-		vertical-align: middle;
+	padding-left: 5px;
+	vertical-align: middle;
+	font-size: 85%;
+}
+.box h2 {
+		margin-left: 5px;
+		margin-top: 10px;
+		font-size: 90%;
+}
+.box p {
+	margin-left: 5px;
+	margin-top: 15px;
+	font-size: 95%;
 }
 .grad1{
-	background: linear-gradient(-90deg, white, #dacbd9);
+	background: linear-gradient(90deg, white, #dacbd9);
 	border: none;
+	height: 246px;
+	max-width: 41%;
 }
 .genHeader {
 	background: linear-gradient(#cac6cb,#868492, #cac6cb);
@@ -62,5 +78,6 @@ nav a{
 	text-align: left;
 	border-left: 1px solid #bdbcbd;
 	border-right: 1px solid #bdbcbd;
-	padding-top: 10px;
+	padding: 10px 0px 10px 0px;
+
 }
