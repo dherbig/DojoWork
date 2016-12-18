@@ -1,0 +1,55 @@
+/* CSS Reset Here */
+* {
+	vertical-align: baseline;
+	font-weight: inherit;
+	font-family: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	color: white;
+	/*border: 0 none;*/
+	outline: 0;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+	}
+
+#top{
+	background-width: 970px;
+	background-color: red;
+}
+.yellow{color: yellow;}
+.underline{text-decoration: underline;}
+.black{color: black;}
+.blue{color: birdsEggBlue;}
+
+#hydra{
+
+}
+#firstHydra{
+	align-self: flex-end;
+	border: 2px dotted red;
+}
+#secondHydra{}
+#thirdHydra{}
+#fourthHydra{
+
+}
+#docsFootHydra{
+
+}
+#textFootHydra{
+
+}
+#middle{
+
+}
+.whiteText{
+
+}
+#bottom{}
+#emptyFooterPlaceholder{}
+#footerLinkContainer{}
+.footerLink{
+
+}
+#copyrightBox{}
