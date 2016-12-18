@@ -6,7 +6,7 @@
 	width: 900px;
 	margin: 5px 10px;
 }
-#dataImg {
+#helloDatabase {
 	margin-left: 10px;
 	display: inline-block;
 }
@@ -32,23 +32,24 @@ nav a{
 	color: #4a1ff6;
 	width: 75px;
 	margin: 0px 0px 0px 0px;
-	padding: 12px 35px;
+	padding: 11px 35px 12px 35px;
 }
 #contentHolder {
 	height: 684px;
-	background: radial-gradient(#735b61,#190a0e)
+	background: radial-gradient(#735b61,#190a0e);
+	padding: 15px;
 }
-#contentHolder img {
+#contentHolder #db {
 	border: 10px solid #c0c0c0;
-	margin: 15px;
+	margin-right: 15px;
 	display: inline-block;
 }
 .box {
 	display:inline-block;
 	vertical-align: top;
-	margin-top: 15px;
 	display: inline-block;
 	font-size: 80%;
+	margin-right: 10px;
 }
 .box h1 {
 	padding-left: 5px;
@@ -56,20 +57,36 @@ nav a{
 	font-size: 85%;
 }
 .box h2 {
-		margin-left: 5px;
-		margin-top: 10px;
+		padding-left: 5px;
+
 		font-size: 90%;
 }
 .box p {
-	margin-left: 5px;
-	margin-top: 15px;
+	padding-left: 5px;
+	padding-top: 10px;
 	font-size: 95%;
+	display: inline-block;
+
+}
+.box img {
+	width: 100%;
+	height: 110px;
 }
 .grad1{
 	background: linear-gradient(90deg, white, #dacbd9);
 	border: none;
 	height: 246px;
 	max-width: 41%;
+}
+.grad2 {
+	max-width: 23%;
+	height: 390px;
+}
+.grad2 p {
+	background: linear-gradient(#98a5c0, #fefefe);
+	height: 250px;
+	position: relative;
+	top: -2px;
 }
 .genHeader {
 	background: linear-gradient(#cac6cb,#868492, #cac6cb);
@@ -78,9 +95,37 @@ nav a{
 	text-align: left;
 	border-left: 1px solid #bdbcbd;
 	border-right: 1px solid #bdbcbd;
-	padding: 10px 0px 10px 0px;
-
+	padding: 10px 0px 10px 0px;s
 }
 .meow {
-	
+	/*This is the button class. Next time, don't get lazy with names.*/
+	position: relative;
+	top: -45px;
+	left: 100px;
+	border: 2px solid black;
+	border-radius: 5px;
+	color: white;
+	background-color: #5c729c;
+	font-size: 85%;
+	padding: 7px 10px;
+	box-shadow: 0px 0px 2px 1px black, 0px 10px 10px -5px black;
+}
+#icon {
+	border: none;
+	display: block;
+	vertical-align: top;
+	text-align: right;
+	margin-right: 40px;
+}
+#icon p {
+	color: #57668d;
+	font-size: 50%;
+	font-weight: bold;
+	position: relative;
+	top: -3px;
+	margin: auto;
+	display: inline;
+}
+#icon img {
+	height: 100%;
 }
