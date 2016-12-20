@@ -3,6 +3,9 @@
 	margin: 0px;
 	font-family: sans-serif;
 }
+body {
+	max-width: 970px;
+}
 #globe {
 	width: 100px;
 	display: inline-block;
@@ -12,7 +15,7 @@
 /*Text Styling*/
 .netBlue {color: #22659e;}
 .red {color: #da3a34;}
-.blue{color: #1fa4b8;}
+.blue{color: #00c0df;}
 .bold{font-weight: bold;}
 
 #theInternet {
@@ -28,18 +31,19 @@
 	padding: 15px;
 	font-size: 166%;
 }
+/*END OF HEADER CSS*/
 #wrapper {
 	background: linear-gradient(#e3e3e3, white);
 }
 #sidePanel {
-	max-width: 13%;
+	max-width: 18%;
 	display: inline-block;
 	padding: 0px 5px;
-	border: 1px solid lime;
+	text-align: left;
 }
 #topHalf{
 	margin-bottom: 20px;
-	border-bottom: 2px solid #e3e3e3;
+	border-bottom: 2px solid #a4a4a4;
 }
 #topHalf h3 {
 	padding: 5px 0px;
@@ -51,6 +55,7 @@
 	padding: 15px 0px;
 	margin-bottom: 5px;
 	font-size: 13px;
+
 }
 .stdButton{
 	width: 94%;
@@ -61,6 +66,7 @@
 	border: none;
 	border-radius: 5px;
 	box-shadow: 1px 1px 1px black;
+	text-align: center;
 }
 #watch {
 	background: linear-gradient(#6297c3, #23669e);
@@ -74,7 +80,7 @@
 	margin: 5px auto 20px auto;
 }
 #ad {
-	width: 100%;
+	width: 94%;
 	margin: 20px auto 0px auto;
 	padding: 10px 5px;
 	background-image: url(images/ad_background.png);
@@ -92,4 +98,104 @@
 #ninja {
 max-width: 43%;
 margin: 5px auto;
+}
+/*END OF SIDEBAR CSS*/
+#rightPanel {
+	display: inline-block;
+	margin-left: 20px;
+	max-width: 78%;
+	vertical-align: top;
+}
+#upperBar{
+	display: inline-block;
+	vertical-align: top;
+	padding: 0px 10px;
+	border-bottom: 1px solid #b4b4b4;
+	padding-bottom: 15px;
+}
+#DNS{
+	display: inline-block;
+	vertical-align: middle;
+	height: 20px;
+}
+#DNS img {
+	display: inline-block;
+	height: 100%;
+	vertical-align: text-bottom;
+}
+#DNS p {
+	display: inline-block;
+	vertical-align: middle;
+}
+#phoneImg{
+	vertical-align: middle;
+	display: inline;
+	width: 35px;
+	margin-left: 460px;
+	padding: 10px;
+}
+#callMe {
+	display: inline-block;
+	text-align: right;
+	vertical-align: middle;
+}
+#callMe p {
+	display: block;
+}
+#teleNumber{
+	font-size: 150%;
+	font-weight: bold;
+}
+.contact {
+	font-size: 10px;
+}
+#content {
+	display: inline-block;
+	vertical-align: top;
+	text-align: left;
+}
+#content h1 {
+	color: #2c6ca2;
+	font-size: 120%;
+	font-weight: bold;
+}
+#content ul li {
+	margin: 5px;
+}
+#content img {
+	width: 30%;
+}
+#content ul li {
+	margin: 5px;
+}
+.bold {
+	font-weight: bold;
+}
+.italic {
+	font-style: italic;
+}
+#big3Box {
+	border-top: 10px solid #0085e0;
+	display: block;
+	vertical-align: top;
+}
+#big3Box img {
+	max-width: 20%;
+	display: inline;
+}
+#text {
+	margin-top: 10px;
+	width: 75%;
+	display: inline-block;
+	vertical-align: top;
+}
+#text h1 {
+	vertical-align: top;
+	display: inline;
+	margin: 10px 0px;
+}
+#text p {
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 10px;
 }

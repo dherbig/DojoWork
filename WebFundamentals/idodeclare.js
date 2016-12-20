@@ -1,0 +1,20 @@
+var x = 10;
+var y = 42;
+var z = 1.00;
+var xx = -0987654321;
+var meh = "antidisestablishmentarianism";
+var hodor = "HODOR ";
+var zombies = "RUN FOR YOUR LIVES!!";
+var awake = false;
+var tired = true;
+var ambiguity;
+
+console.log("Our number system is notated in base "+x);
+console.log(meh + " is a really long word that describes the political thoughts of a group of dead people");
+console.log("Hold the door! " + hodor + hodor + hodor);
+console.log("The answer to life, the universe, and everything is "+y);
+console.log("What's that on the horizon? " + zombies);
+console.log("Are you all feeling nice and energized this morning? " + awake);
+console.log("You must have gotten a bad nights sleep, didn't you? " + tired);
+console.log("The first edition of our software that we'll release to users will be v" +z);
+console.log("KITTY GET OFF THE KEYBOARD!! "+ xx);
