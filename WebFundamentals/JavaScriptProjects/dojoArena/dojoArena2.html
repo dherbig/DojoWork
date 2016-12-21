@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- /* ADJUST THIS! */ -->
+		<title>Document</title>
+		<script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'></script>
+		<link rel="stylesheet" type="text/css" href="dojoArena2.css">
+		<script>
+			$(document).ready(function(){
+// <!-- COPY THIS-->
+				$('.buttonContainer').hover(
+					function(){
+						$(this).children('.menu').slideDown(200);
+					}, function(){
+						$(this).children('.menu').slideUp(200);
+				});
+
+				$('.option').click(function(){
+					//pull this particular buttonContainer person ID tag.
+					var identity =  $( this ).closest('.buttonContainer').attr('person')
+					//Change buttonContainer's text
+					var word = $(this).attr("name");
+					var ref = $(this).attr("place");
+					$('.buttonContainer' +  + 'p').text(function(){
+						return word;
+					});
+					//Change the fighter image to match our selection, based on each div's "place" tag.
+					// $('.option').click(function(){
+					// 	alert($('#'+identity+' .fighter').attr("src")=="");
+					// });
+					// if (!($('#'+identity+' .fighter').attr("src")=="")){
+						$('#'+identity+' .fighter').hide(300);
+						setTimeout(function(){
+							$('#'+identity+' .fighter').attr("src", ref);
+						}, 300)
+						$('#'+identity+' .fighter').show(300);
+					// }else{
+						// $('#'+identity+' .fighter').show(300);
+					// }
+				})
+// TO HERE
+			});
+		</script>
+	</head>
+	<body>
+		<!-- //this div will start...hidden? -->
+		<div id="selectPlayers">
+			<h1>Choose a Fighter!</h1>
+			<div class="buttonContainer" person="p1">
+				<p>P1: Select from...</p>
+				<div class="menu">
+					<div class="option" name="Leonardo" place="imgs/leo.png">Leonardo</div>
+					<div class="option" name="Donatello" place="imgs/donny.png">Donatello</div>
+					<div class="option" name="Michelangelo" place="imgs/mikey.png">Michelangelo</div>
+					<div class="option" name="Raphael" place="imgs/raphael.png">Raphael</div>
+					<div class="option" name="Rick" place="imgs/rick.png">Rick</div>
+					<div class="option" name="Drunk Rick" place="imgs/rickdrink.png">Drunk Rick</div>
+					<div class="option" name="Morty" place="imgs/morty.png">Morty</div>
+					<div class="option" name="Richard" place="imgs/richard.png">Richard</div>
+				</div>
+			</div>
+			<div class="buttonContainer" person="p2">
+				<p>P2: Select from...</p>
+				<div class="menu">
+					<div class="option" name="Leonardo" place="imgs/leo.png">Leonardo</div>
+					<div class="option" name="Donatello" place="imgs/donny.png">Donatello</div>
+					<div class="option" name="Michelangelo" place="imgs/mikey.png">Michelangelo</div>
+					<div class="option" name="Raphael" place="imgs/raphael.png">Raphael</div>
+					<div class="option" name="Rick" place="imgs/rick.png">Rick</div>
+					<div class="option" name="Drunk Rick" place="imgs/rickdrink.png">Drunk Rick</div>
+					<div class="option" name="Morty" place="imgs/morty.png">Morty</div>
+					<div class="option" name="Richard" place="imgs/richard.png">Richard</div>
+				</div>
+			</div>
+			<div class="buttonContainer" person="p3">
+				<p>P3: Select from...</p>
+				<div class="menu">
+					<div class="option" name="Leonardo" place="imgs/leo.png">Leonardo</div>
+					<div class="option" name="Donatello" place="imgs/donny.png">Donatello</div>
+					<div class="option" name="Michelangelo" place="imgs/mikey.png">Michelangelo</div>
+					<div class="option" name="Raphael" place="imgs/raphael.png">Raphael</div>
+					<div class="option" name="Rick" place="imgs/rick.png">Rick</div>
+					<div class="option" name="Drunk Rick" place="imgs/rickdrink.png">Drunk Rick</div>
+					<div class="option" name="Morty" place="imgs/morty.png">Morty</div>
+					<div class="option" name="Richard" place="imgs/richard.png">Richard</div>
+				</div>
+			</div>
+			<div class="buttonContainer" person="p4">
+				<p>P4: Select from...</p>
+				<div class="menu">
+					<div class="option" name="Leonardo" place="imgs/leo.png">Leonardo</div>
+					<div class="option" name="Donatello" place="imgs/donny.png">Donatello</div>
+					<div class="option" name="Michelangelo" place="imgs/mikey.png">Michelangelo</div>
+					<div class="option" name="Raphael" place="imgs/raphael.png">Raphael</div>
+					<div class="option" name="Rick" place="imgs/rick.png">Rick</div>
+					<div class="option" name="Drunk Rick" place="imgs/rickdrink.png">Drunk Rick</div>
+					<div class="option" name="Morty" place="imgs/morty.png">Morty</div>
+					<div class="option" name="Richard" place="imgs/richard.png">Richard</div>
+				</div>
+			</div>
+		</div>
+		<div id="p1" class="player">
+			<img src="" name="" class="fighter">
+			<p>Player One</p>
+		</div>
+		<div id="p2" class="player">
+			<img src="" name="" class="fighter">
+			<p>Player Two</p>
+		</div>
+		<div id="p3" class="player">
+			<img src="" name="" class="fighter">
+			<p>Player Three</p>
+		</div>
+		<div id="p4" class="player">
+			<img src="" name="" class="fighter">
+			<p>Player Four</p>
+		</div>
+
+	</body>
+</html>
