@@ -1,0 +1,21 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.functionBox {
+	display: block;
+	border-bottom: 5px solid black;
+	width: 30%;
+	min-height: 150px;
+	background: linear-gradient(black, white);
+	margin: 20px auto;
+}
+//box IDs are all the same. #.
+
+.functionBox button {
+	width: 50px;
+	height: 30px;
+	background: linear-gradient(lime, pink);
+	vertical-align: center;
+}

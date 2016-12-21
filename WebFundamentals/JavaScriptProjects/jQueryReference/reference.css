@@ -1,0 +1,73 @@
+/* JS Syntax $('thing_to_mess_with othe_attribute').what_to_do(function(){
+		script to execute
+	})*/
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+background {
+	width: 1000px;
+	background-color: rgb(67, 77, 115);
+}
+.box {
+	margin: 15px auto;
+	width: 600px;
+	min-height: 200px;
+	border: 5px solid blue;
+	padding: 15px;
+	text-align: center;
+	vertical-align: middle;;
+}
+.box h1 {
+	margin-bottom: 10px;
+}
+.box p {
+	margin: 10px auto;
+}
+.button {
+	font-size: 100%;
+	padding: 5px;
+	margin: 10px auto;
+	text-align: center;
+	display: block;
+}
+#icon {
+	display: block;
+	width: 150px;
+	height: 150px;
+	margin: 5px auto;
+}
+.pictureButton {
+	height: auto;
+	display: block;
+	width: auto;
+}
+.icon {
+	display: block;
+	width: 150px;
+	height: 150px;
+	margin: 5px auto;
+}
+.maroon {
+	background-color: #800000;
+	border-color: red;
+	color: white;
+}
+.original {
+	border: 3px solid lime;
+	position: relative;
+	top: 150px
+	margin: auto;
+}
+.copy {
+	border: 3px solid purple;
+}
+.after {
+	border: 3px solid pink
+}
+.befAft {
+	display:inline;
+	max-width: 40%;
+}

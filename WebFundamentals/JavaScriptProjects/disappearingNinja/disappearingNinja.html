@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+		<link rel="stylesheet" type="text/css" href="disappearingNinja.css">
+		<script>
+			$(document).ready(function(){
+				$('.ninja').click(function(){
+					$(this).fadeOut(300);
+				})
+
+				$('#theButton').click(function(){
+					$('img').show();
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<h1>Disappearing Ninja</h1>
+		<div id="ninjabox">
+			<img src="Ninja.png" alt="Ninja!" class="ninja">
+			<img src="Ninja.png" alt="Ninja!" class="ninja">
+			<img src="Ninja.png" alt="Ninja!" class="ninja">
+			<img src="Ninja.png" alt="Ninja!" class="ninja">
+			<br>
+			<img src="Ninja.png" alt="Ninja!" class="ninja">
+			<img src="Ninja.png" alt="Ninja!" class="ninja">
+			<img src="Ninja.png" alt="Ninja!" class="ninja">
+			<img src="Ninja.png" alt="Ninja!" class="ninja">
+		</div>
+		<button type="button" id="theButton">Click here to bring all the ninjas back!</button>
+	</body>
+</html>
