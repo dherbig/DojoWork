@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" initial-scale="1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>PokeImages!</title>
+	<script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.js'></script>
+	<link rel="stylesheet" href="pokemon.css">
+	<script>
+
+		$(document).ready(function(){
+
+			for (var i = 1; i<152; i++){
+				$('#emptyFrame').append('<div class="pokeBox"><img src="http://pokeapi.co/media/img/' + i + '.png" class="pokeImg"><p class="pokeNum">' + i + '</p><div>');
+			}
+
+		})
+	</script>
+</head>
+<body>
+	<div id='emptyFrame'>
+
+	</div>
+</body>
+</html>

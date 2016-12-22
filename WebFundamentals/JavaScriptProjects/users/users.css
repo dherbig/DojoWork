@@ -1,0 +1,33 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body {
+	width: 375px;
+}
+table {
+	border: 1px solid black;
+	text-align: left;
+	margin-bottom: 30px;
+}
+table thead {
+	border-bottom: 2px solid black;
+	margin: auto 20px;
+}
+td {
+	border: 1px solid gray;
+}
+h1 {
+	text-align: left;
+	border-bottom: 3px solid black;
+}
+form {
+	text-align: right;
+}
+[type=submit] {
+	font-size: 12px;
+	padding: 5px;
+}
+div {
+	width:250px;
+}

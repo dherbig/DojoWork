@@ -1,0 +1,20 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.pokeBox {
+	display: inline-block;
+	border: 1px solid red;
+	width: 148px;
+	height: 120px;
+}
+.pokeImg {
+	display: block;
+	margin: auto;
+}
+.pokeNum {
+	text-align: center;
+	border: 1px solid blue;
+	margin: 3px auto;
+	font-weight: bold;
+}
