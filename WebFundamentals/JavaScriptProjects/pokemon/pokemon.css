@@ -2,19 +2,74 @@
 	margin: 0px;
 	padding: 0px;
 }
+body {
+	background-image: url(map.png);
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+#pokedex {
+	max-width: 805px;
+	margin-left: 20px;
+	display: inline-block;
+	border: 10px solid black;
+}
 .pokeBox {
 	display: inline-block;
-	border: 1px solid red;
+	border: 2px solid red;
+	vertical-align: top;
 	width: 148px;
-	height: 120px;
+	text-align: center;
+	margin: 5px 5px;
+	background-color: white;
+	font-weight: bold;
 }
 .pokeImg {
 	display: block;
 	margin: auto;
+
+	height: 120px;
 }
 .pokeNum {
 	text-align: center;
-	border: 1px solid blue;
-	margin: 3px auto;
+	margin: auto;
+	padding: 5px;
 	font-weight: bold;
+	background-color: LightBlue;
+}
+#resultBox {
+	border: 10px solid yellow;
+	background-color: LightGray;
+	display: inline-block;
+	position: fixed;
+	top: 100px;
+	left: 900px;
+	width: 350px;
+	height: 450px;
+
+}
+#resultBox h2 {
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+#resultBox .pokeImg {
+	background-image: url("ball.png");
+	background-size: cover;
+
+	border-bottom: 5px dotted yellow;
+	height: auto;
+	width: 250px;
+}
+#resultBox p {
+	padding: 5px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+	margin-top: 15px;
+	margin-left: 10px;
+}
+.stat {
+	text-transform: capitalize;
 }

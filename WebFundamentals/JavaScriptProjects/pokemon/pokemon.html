@@ -11,16 +11,46 @@
 
 		$(document).ready(function(){
 
-			for (var i = 1; i<152; i++){
-				$('#emptyFrame').append('<div class="pokeBox"><img src="http://pokeapi.co/media/img/' + i + '.png" class="pokeImg"><p class="pokeNum">' + i + '</p><div>');
+			function whosThatPokemon(index){
+				//get the pokemon's data block from the server
+				$.get("http://pokeapi.co/api/v1/pokemon/" + index,
+				 function(data){
+					//Replace the text within each field with the updated data
+					$("#name").text(data.name);
+					$("#resultImage").attr("src", "http://pokeapi.co/media/img/" + data.pkdx_id + ".png");
+					var typeList = '';
+					typeList += data.types[0].name;
+					for (var i = 1; i < data.types.length; i++){
+						typeList += " / " + data.types[i].name;
+					}
+					$("#type").text(typeList);
+					$("#height").text(data.height);
+					$("#weight").text(data.weight);
+				}, "json");
 			}
 
+			//make the boxes
+			for (var i = 1; i<151; i++){
+				$('#pokedex').append('<div class="pokeBox"><img src="http://pokeapi.co/media/img/' + i + '.png" class="pokeImg"><p class="pokeNum">' + i + '</p><div>');
+			}
+
+			$('.pokeBox').click(function(){
+				var id = $(this).children('p').text();
+				var itsPikachu = whosThatPokemon(id)
+				$('#resultBox').html(itsPikachu);
+			})
 		})
 	</script>
 </head>
 <body>
-	<div id='emptyFrame'>
-
+	<div id='pokedex'>
+	</div>
+	<div id="resultBox">
+		<h2 id="name">Choose a Pokemon!</h2>
+		<img class="pokeImg" id="resultImage" src="ball.png">
+		<p>Type(s): <span class="stat" id="type"></span></p>
+		<p>Height: <span class="stat" id="height"></span></p>
+		<p>Weight: <span class="stat" id="weight"></span></p>
 	</div>
 </body>
 </html>
