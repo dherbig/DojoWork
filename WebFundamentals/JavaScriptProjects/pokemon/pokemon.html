@@ -24,8 +24,8 @@
 						typeList += " / " + data.types[i].name;
 					}
 					$("#type").text(typeList);
-					$("#height").text(data.height);
-					$("#weight").text(data.weight);
+					$("#height").text((data.height/10) + " m");
+					$("#weight").text((data.weight/10) + " kg");
 				}, "json");
 			}
 
@@ -48,9 +48,9 @@
 	<div id="resultBox">
 		<h2 id="name">Choose a Pokemon!</h2>
 		<img class="pokeImg" id="resultImage" src="ball.png">
-		<p>Type(s): <span class="stat" id="type"></span></p>
-		<p>Height: <span class="stat" id="height"></span></p>
-		<p>Weight: <span class="stat" id="weight"></span></p>
+		<p>Type(s): <span class="stat" id="type">---</span></p>
+		<p>Height: <span id="height">---</span></p>
+		<p>Weight: <span id="weight">---</span></p>
 	</div>
 </body>
 </html>

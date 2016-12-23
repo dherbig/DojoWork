@@ -5,16 +5,35 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Contact Cards</title>
-	<link rel="import" type="style/css" href="contactCard.css">
+	<link rel="stylesheet" href="contactCard.css">
 	<script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+	<script>
+		$(document).ready(function(){
+
+			$('form').submit(function(){
+				return false;
+			});
+			$('#pushMe').click(function(){
+				var first =  $('#first').val();
+				var last =  $('#last').val();
+				var info =  $('#info').val();
+				var description =  $('#description').val();
+				$('#contactList').append("<div class='contactCard'><h1>"+ first + " " + last + "</h1></div><span class='backSide'><p>Contact Me At: " + info + "</p><p>"+ description + "</p></span>");
+			})
+			$('#pushMe').on("click", ".contactCard", function(){
+				$('this .backSide').toggle();
+			})
+
+		})
+	</script>
 </head>
 <body>
 	<form>
-		<p>First Name: <input type='text' name='first' placeholder="e.g.: 'John'"></p>
-		<p>Last Name: <input type='text' name='last' placeholder="e.g.: 'Smith'"></p>
-		<br>
-		<p>Description: </p><textarea name='description' placeholder="Tell us about yourself!" rows="4" cols="50"></textarea>
-		<p><input type="submit"></p>
+		<p>First Name: <input type='text' id='first' value="a" placeholder="e.g.: 'John'"></p>
+		<p>Last Name: <input type='text' id='last' value="b" placeholder="e.g.: 'Smith'"></p>
+		<p>Contact: <input type='text' id='info' value="c" placeholder="e.g.: 'Smith'"></p>
+		<p>Description: <textarea id='description' value="dasdf" placeholder="Tell us about yourself!" rows="4" cols="19"></textarea>
+		<p><input type="submit" id="pushMe"></p>
 	</form>
 	<div id="contactList">
 	</div>
