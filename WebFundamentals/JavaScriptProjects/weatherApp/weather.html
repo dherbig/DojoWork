@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'></script>
+	<link rel="stylesheet" type="text/css" href="weather.css">
+	<title>Weather</title>
+	<script>
+		$(document).ready(function(){
+
+//http://api.openweathermap.org/data/2.5/weather?q=London,uk&&appid=19c8aa77cadb9508d80364f84f03f60f
+
+			$('form').submit(function(){
+				var place = $("#city").val();
+				$.get("http://api.openweathermap.org/data/2.5/weather?q="+ place + "&&appid=19c8aa77cadb9508d80364f84f03f60f", function(data){
+					$('#resultDiv').html("<h1>" + place + "</h1><p>Latitude: " + data.coord.lat + "<p>Longitude: " + data.coord.lon + "</p><p></p><table><tr><td>Temperature: " + Math.floor(data.main.temp *(9/5)-459.67) + " F</td></tr><tr class='sub'><td>High: " + Math.floor(data.main.temp_max *(9/5)-459.67) + " F</td></tr><tr class='sub'><td>Low: " + Math.floor(data.main.temp_min *(9/5)-459.67) + " F</td></tr><tr><td>Current Conditions: <span id='case'>" + data.weather[0].description + "</span></td></tr>");
+
+				})
+				$('#resultDiv').slideDown(300);
+				return false;
+			})
+		});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+
+		<div id="formDiv">
+			<h1>Weather Conditions</h1>
+			<form action="">
+				<p>Type in a city: <input type="text" id="city" placeholder="e.g.: Seattle" value="Seattle"></input>
+				<input type="submit" value="GO!" id="go"></p>
+			</form>
+		</div>
+		<div id="resultDiv">
+
+		</div>
+	</div>
+</body>
+</html>

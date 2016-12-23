@@ -13,6 +13,7 @@ body {
 	margin-left: 20px;
 	display: inline-block;
 	border: 10px solid black;
+	border-radius: 10px;
 }
 .pokeBox {
 	display: inline-block;
@@ -21,8 +22,9 @@ body {
 	width: 148px;
 	text-align: center;
 	margin: 5px 5px;
-	background-color: white;
 	font-weight: bold;
+	border-radius: 10px;
+	background: linear-gradient(-45deg, white, #edf3fc)
 }
 .pokeImg {
 	display: block;
@@ -35,18 +37,18 @@ body {
 	padding: 5px;
 	font-weight: bold;
 	border-top: 1px solid black;
-	background-color: LightBlue;
+	background: linear-gradient(#91b5c1, LightBlue, #91b5c1);
 }
 #resultBox {
 	border: 10px solid yellow;
-	background-color: LightGray;
+	background: linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,1));
 	display: inline-block;
 	position: fixed;
 	top: 100px;
 	left: 900px;
 	width: 350px;
 	height: 450px;
-
+	border-radius: 15px;
 }
 #resultBox h2 {
 	text-align: center;
