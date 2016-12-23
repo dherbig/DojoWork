@@ -18,21 +18,25 @@
 				var last =  $('#last').val();
 				var info =  $('#info').val();
 				var description =  $('#description').val();
-				$('#contactList').append("<div class='contactCard'><h1>"+ first + " " + last + "</h1></div><span class='backSide'><p>Contact Me At: " + info + "</p><p>"+ description + "</p></span>");
-			})
-			$('#pushMe').on("click", ".contactCard", function(){
-				$('this .backSide').toggle();
-			})
+				$('#contactList').append("<div class='contactCard'><h1>"+ first + " " + last + "</h1><span class='backSide'><p>Contact Me At: " + info + "</p><p>"+ description + "</p></span></div>");
+			});
+
+			//Shows the contact information and description fields.
+			$('#contactList').on("click", ".contactCard", function(){
+				$(this).children().toggle();
+				$(this).css('display', 'block')
+
+			});
 
 		})
 	</script>
 </head>
 <body>
 	<form>
-		<p>First Name: <input type='text' id='first' value="a" placeholder="e.g.: 'John'"></p>
-		<p>Last Name: <input type='text' id='last' value="b" placeholder="e.g.: 'Smith'"></p>
-		<p>Contact: <input type='text' id='info' value="c" placeholder="e.g.: 'Smith'"></p>
-		<p>Description: <textarea id='description' value="dasdf" placeholder="Tell us about yourself!" rows="4" cols="19"></textarea>
+		<p>First Name: <input type='text' id='first' value="Mark" placeholder="e.g.: 'John'"></p>
+		<p>Last Name: <input type='text' id='last' value="Ronson" placeholder="e.g.: 'Smith'"></p>
+		<p>Contact: <input type='text' id='info' value="(888) 867-5309" placeholder="e.g.: 'Smith'"></p>
+		<p>Description: <textarea id='description' placeholder="Tell us about yourself!" rows="4" cols="19"></textarea>
 		<p><input type="submit" id="pushMe"></p>
 	</form>
 	<div id="contactList">
