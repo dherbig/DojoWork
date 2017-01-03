@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>The Grand Book of Houses</title>
+	<link rel="stylesheet" href="gameOfThronesDb.css">
+	<script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'></script>
+	<script>
+
+		//Some functions I will use later
+
+		//Hides the information boxes so that no one sees me load. :)
+		function rollUp(time){
+			var step1 = time/3;
+			var step2 = (time/3)*2;
+			$('#statBlock').toggle(step1);
+			$('#overview p').delay(step1).slideToggle(time);
+			$('#houseDetails').delay(step2).slideToggle(time);
+		}
+		//Same function, but plays the animations in reverse order.
+		function rollDown(time){
+			var step1 = time/3;
+			var step2 = (time/3)*2;
+			$('#houseDetails').slideToggle(step1);
+			$('#overview p').delay(step1).slideToggle(step1);
+			$('#statBlock').delay(step2).toggle(step1);
+		}
+
+		//This calls rollUp or rollDown depending of if the information is displayed.  This prevents the page from trying to hide all the information boxes when the page loads and they aren't displayed.
+		function rollToggle(time){
+			if ($('#statBlock').is(':visible')){
+				rollUp(time);
+			} else {
+			rollDown(time);
+			}
+		}
+
+		//This function hides all of the info panels, grabs the selected house's data from the server, displays it, and then shows the rest of the data.
+		function callTheBanners(houseID, src){
+			//Places emergency default values for positions who's values might be '', waiting for rollToggle to execute before changing.
+			$('#lord').delay(600).text("Deceased")
+			$('#heir').delay(600).text("None")
+			//get the info
+			$.get('https://www.anapioficeandfire.com/api/houses/' + houseID, function(data){
+				//parse the data from the api, and put it in the right places.
+				console.log(data);
+				//These 'simple' queries return strings with the info we want
+				$('.name').delay(600).text(data.name);
+				$('.words').delay(600).text(data.words);
+				$('#region').delay(600).text(data.region);
+				//This adds the sigil of the house we clicked to the houseDetails header.
+				$('#selectedSigil').delay(800).attr('src', src);
+				//the 'circa' field contains both a time and person, so I'll initialize the string here.
+				$('.circa').delay(600).text('Founded: ' + data.founded);
+
+				//All people in the House object are passed as URLs corresponding to their individual entry, which returns us a person object.  These blocks of code get data from the URL (e.g. data.founder) and extracts the name (e.g. charInfo.name).
+				$.get(data.founder, function(charInfo){
+					// $(charInfo.aliases[0]).appendTo(circus
+					$('.circa').append(' by ' + charInfo.aliases[0]);
+				});
+
+				//Another person.
+				$.get(data.currentLord, function(charInfo){
+					$('#lord').text(charInfo.name);
+				});
+
+				//These values output arrays, and frequently contain multiple values.  As a result, I need to add each value in the array to a single string, and then assign the string to it's designated location.
+				var titleStr = '';
+				for (var item = 0; item < data.titles.length; item++){
+					titleStr += ', ' + data.titles[item];
+				}
+				$('#title').text(titleStr);
+
+				var seatsStr = data.seats[0];
+				for (var item = 1; item < data.seats.length; item++){
+					seatsStr += ', ' + data.seats[item]
+				}
+				$('#seats').text(seatsStr);
+
+				//delays for a bit to allow values to populate
+				setTimeout(rollDown(600), 600)
+			})
+		}
+
+		$(document).ready(function(){
+			//Hides the results panel to start
+			rollUp(0);
+			//When you click a house sigil, populate the information panel with related information
+			$('.houseBox').click(function(){
+				//Hides the information boxes so that no one sees me load if it's been opened already. :) Defined above.
+					//Check to see if it's visible
+					if (($('#houseDetails').is(':visible'))){
+					rollUp(600);
+					}
+				//grabs the image location from the box we clicked on.
+				var sigilLocation = ($(this).children('img').attr('src'));
+
+				//waits until the page has loaded before trying to assign scripts to things, then...
+				//Starts the helper function (declared above) to replace all the values
+				setTimeout(301, callTheBanners($(this).attr("idx"), sigilLocation))
+				rollToggle(800);
+			})
+		})
+	</script>
+</head>
+
+<body>
+	<!-- Displays the four main houses' sigils -->
+	<div id="houseImg">
+		<div class="houseBox" idx="15">
+			<img src="imgs/baratheon.png" alt="Baratheon">
+			<h3>House Baratheon</h3>
+			<!-- dB IDs: 15, 16, 17 -->
+		</div>
+		<div class="houseBox" idx="229">
+			<img src="imgs/lannister.png" alt="Lannister">
+			<h3>House Lannister</h3>
+			<!-- dB IDs: ...of Casterly Rock=229; ...of Darry=230; ...of Lannisport=231 -->
+		</div>
+		<div class="houseBox" idx="362">
+			<img src="imgs/stark.png" alt="Stark">
+			<h3>House Stark</h3>
+			<!-- dB IDs: 362 -->
+		</div>
+		<div class="houseBox" idx="378">
+			<img src="imgs/targaryen.png" alt="Targaryen">
+			<h3>House Targaryen</h3>
+			 <!-- dB IDs: 378 -->
+		</div>
+	</div>
+	<!-- Displays information about the last selected house. -->
+	<div id="houseDetails">
+		<!-- Centered House Sigil, words, and information on it's foundation -->
+		<div id="overview">
+			<h1 class="name"></h1>
+			<h2 class="words"></h2>
+			<img id="selectedSigil" src="" alt="">
+			<p class="circa"></p>
+		</div>
+		<!-- Shows location and lineage information -->
+		<div id="statBlock">
+			<table>
+				<!-- Region -->
+				<tr>
+					<td class="leftT">Region: </td>
+					<td class="rightT" id='region'></td>
+				</tr>
+				<!-- Ruled By -->
+				<tr>
+					<td class="leftT">Ruled by:</td>
+					<td class="rightT" id='lord'></td>
+				</tr>
+				<tr>
+					<td class='rightT' id='title'></td>
+				</tr>
+				<!-- Seat of power -->
+				<tr>
+					<td class="leftT">Ruled from:</td>
+					<td class="rightT" id='seats'></td>
+				</tr>
+				<!-- Heir -->
+				<tr>
+					<td class="leftT">Heir to the throne:</td>
+					<td class="rightT" id='heir'></td>
+				</tr>
+			</table>
+		</div>
+			<!-- Stats I Want, in Order:
+			-Name
+			-sigil
+			-words
+			-founded (id=circa) by founder
+			DIVIDER
+			- Region
+			- Current Lord:
+				- Titles-THIS IS AN ARRAY
+				- Seats - ARRAY
+			- Heir -->
+
+
+	</div>
+</body>
+</html>

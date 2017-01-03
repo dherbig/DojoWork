@@ -1,0 +1,64 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+#houseImg {
+	text-align: center;
+	border-bottom: 10px solid transparent;
+	border-image: url(imgs/belt.jpg) 30% round;
+	background-image: url(imgs/brickTile1.jpg);
+	background-size: contain;
+	padding: 30px auto;
+}
+.houseBox	{
+	display: inline-block;
+	padding: 10px;
+	width: 15%;
+	border: 20px solid transparent;
+	border-image: url(imgs/leatherEdge.png) 10% repeat;
+	text-align: center;
+	background-color: white;
+	margin: 10px 5px;
+}
+.houseBox img {
+	width: 80%;
+	height: auto;
+	display: inline;
+	margin: 10px auto;
+}
+.houseBox h3 {
+	font-size: 30px;
+	margin: 0px auto;
+}
+#houseDetails {
+	/*Holds ALL the data*/
+	margin: 50px auto;
+	display: inline-block;
+	margin: auto;
+	width: 100%;
+	background-image: url(imgs/blackLeather.jpg);
+	background-size: cover;
+	color: white;
+}
+#overview {
+	/*Holds name, sigil, foundation info*/
+	max-width: 310px;
+	width: 30%;
+	border: 1px solid pink;
+	text-align: center;
+	display: inline-block;
+}
+#overview img {
+	width: 80%;
+	height: auto;
+	display: inline;
+	margin: 10px 20px;
+}
+#statBlock {
+	/*Holds extra details; region, lord, heir, etc*/
+	display: inline;
+	width: 80%;
+}
+#statBlock table {
+	border: 1px solid red;
+}
