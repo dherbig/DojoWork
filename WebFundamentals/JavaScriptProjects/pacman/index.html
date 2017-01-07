@@ -37,7 +37,7 @@
 			background-repeat: no-repeat;
 		}
 		div#pacman {
-			background-image: url('pacman.gif');
+			background-image: url('rPacman.gif');
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
@@ -138,15 +138,19 @@
 			if(e.keyCode == 38){
 				//Up 38
 				pacman.y--;
+				document.getElementById('pacman').style.backgroundImage = "url('uPacman.gif')";
 			} else if(e.keyCode == 40){
 				//down 40
 				pacman.y++;
+				document.getElementById('pacman').style.backgroundImage = "url('dPacman.gif')";
 			} else if(e.keyCode == 37){
 				//left 37
 				pacman.x--;
+				document.getElementById('pacman').style.backgroundImage = "url('lPacman.gif')";
 			} else if(e.keyCode == 39){
 				//right 39
 				pacman.x++;
+				document.getElementById('pacman').style.backgroundImage = "url('rPacman.gif')";
 			}
 
 			if(world[pacman.y][pacman.x] == 1){
