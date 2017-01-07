@@ -1,0 +1,192 @@
+<html>
+<head>
+	<title>1942 Game</title>
+
+<style type="text/css">
+	body{
+		background-color:black;
+	}
+	#container{
+		background: url('background.jpg');
+		width:1000px;
+		height:550px;
+	}
+	#hero{
+		background: url('1942.gif');
+		background-position: -85px -180px;
+		width:28px;
+		height:28px;
+		position:absolute;
+	}
+	.enemy1{
+		background: url('1942.gif');
+		background-position: -30px -10px;
+		width:28px;
+		height:28px;
+		position:absolute;
+		transform: rotate(180deg);
+	}
+	.bullet{
+		background: url('1942.gif');
+		background-position: -185px -400px;
+		width:18px;
+		height:18px;
+		position:absolute;
+	}
+	#score{
+		position:absolute;
+		border:10px solid red;
+		top:20px;
+		left:800px;
+		background-color:white;
+		padding:10px;
+		font-size:30px;
+		font-family: Arial;
+	}
+</style>
+</head>
+<body>
+	<div id='container'>
+		<div id='hero' style='top:300px; left:300px;'></div>
+		<div id='enemies'></div>
+		<div id='bullets'></div>
+		<div id='explosions'></div>
+	</div>
+
+	<div id='score'>100</div>
+
+
+<script>
+
+	var hero = {
+		x: 300,
+		y: 300
+	}
+
+	var enemies = [
+		{x: 50, y: 50},
+		{x: 250, y:50},
+		{x: 450, y:50}
+
+	]
+
+	var bulletLocker = [
+		{x: 50,	y: 150, dir:1},
+		{x: 150, y: 150, dir:1},
+		{x: 300, y: 50, dir:1}
+	]
+
+	var explosions = [];
+
+	function displayEnemies(){
+		var output = '';
+		for (var i = 0; i < enemies.length; i++){
+			output += "<div class='enemy1' style='top: " + enemies[i].y + "px; left: " + enemies[i].x + "px;'></div>";
+		}
+		document.getElementById('enemies').innerHTML = output;
+
+		var bullOut = '';
+		for (var j = 0; j < bulletLocker.length; j++){
+			bullOut += "<div class='bullet' style='top: " + bulletLocker[j].y + "px; left: " + bulletLocker[j].x + "px;'></div>";
+		}
+		document.getElementById('bullets').innerHTML = bullOut;
+	}
+
+	//Changes the location of the on screen enemies and bullets
+	function moveEnemies(){
+		//Moves each enemy
+		for (var i = 0; i < enemies.length; i++){
+			//Move every enemy down by 5 px
+			enemies[i].y += 5;
+			//If the enemy hits the end of the level, respawn it at the top at a random location
+			if(enemies[i].y > 550){
+				enemies[i].y = 0;
+				enemies[i].x = Math.random()*490+10;
+			}
+		}
+		//Moves each bullet
+		for(var b = 0; b < bulletLocker.length; b++){
+			//Updates the location of each bullet, including the player's
+			bulletLocker[b].y += 10*bulletLocker[b].dir;
+			//Removes out of bounds bullets
+			if(bulletLocker[b].y > 550 || bulletLocker[b].y < 0){
+				bulletLocker.splice(b, 1);
+			}
+		}
+	}
+
+
+	//Updates the hero's location
+	function displayHero(){
+		document.getElementById('hero').style.top = hero.y + "px";
+		document.getElementById('hero').style.left = hero.x + "px";
+	}
+
+	//What happens when you press keys (Player Movement)
+	document.onkeydown = function (a){
+		if(a.keyCode == 37 && hero.x > 10) {
+			//Left
+			hero.x -= 10;
+		} else if(a.keyCode == 39 && hero.x < 980){
+			//Right
+			hero.x += 10;
+		} else if(a.keyCode == 38 && hero.y > 0){
+			//Up
+			hero.y -= 10;
+		} else if(a.keyCode == 40 && hero.y < 530){
+			//Down
+			hero.y += 10;
+		}  else if(a.keyCode == 32){
+			//Space --  Shoot a bullet (by adding a new object into bulletLocker)
+			var bang = {};
+			bang.y = hero.y-10;
+			bang.x = hero.x+6;
+			bang.dir = -1;
+			bulletLocker.push(bang)
+		}
+		// console.log(a);
+		//Update the player's location to match the new command.
+		displayHero();
+	}
+
+	//Causes the enemies and bullets to be removed (replaced with an explosion) if they collide
+	function collisions(){
+		//For each object in enemies
+		for(var i = 0; i < enemies.length; i++){
+			//Look at each bullet
+			for(var j = 0; j < bulletLocker.length; i++){
+				//If they are in the same place,
+				console.log(enemies[i].x + ' = Enemy X Postion');
+				console.log(bulletLocker[j].x + ' = Bullet X Position')
+				if( (bulletLocker[j].y === enemies[i].y) ){
+// && (bulletLocker[j].y === enemies[i].y
+					//Spawn an explosion
+					// boom(enemies[i].x,enemies[i].y,3);
+					//Remove the enemy
+					// enemies.splice(i,1);
+					//remove the bullet
+					// bulletLocker.splice(j,1);
+				}
+			}
+		}
+	}
+
+	function boom(x,y,t){
+
+	}
+
+	displayHero();
+
+	function gameLoop(){
+		displayHero();
+		moveEnemies();
+		displayEnemies();
+		collisions();
+	}
+
+setInterval(gameLoop, 500);
+
+</script>
+
+</body>
+</html>
