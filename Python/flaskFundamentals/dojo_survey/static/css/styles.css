@@ -1,0 +1,21 @@
+td {
+	width: 150px;
+	text-align: left;
+}
+
+input {
+	width: 150px;
+}
+textarea{
+	width: 150px;
+}
+select {
+	width: 150px;
+}
+
+#button {
+	margin-left: 153px;
+}
+h1 {
+	text-decoration: underline;
+}

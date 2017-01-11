@@ -16,8 +16,8 @@
 			var step1 = time/3;
 			var step2 = (time/3)*2;
 			$('#statBlock').toggle(step1);
-			$('#overview p').delay(step1).slideToggle(time);
-			$('#houseDetails').delay(step2).slideToggle(time);
+			$('#overview p').delay(step1).slideToggle(step1);
+			$('#houseDetails').delay(step2).slideToggle(step1);
 		}
 		//Same function, but plays the animations in reverse order.
 		function rollDown(time){
@@ -69,7 +69,10 @@
 				//These values output arrays, and frequently contain multiple values.  As a result, I need to add each value in the array to a single string, and then assign the string to it's designated location.
 				var titleStr = '';
 				for (var item = 0; item < data.titles.length; item++){
-					titleStr += ', ' + data.titles[item];
+					titleStr += data.titles[item];
+					if (item < data.titles.length-1){
+						titleStr += ', '
+					}
 				}
 				$('#title').text(titleStr);
 
@@ -78,9 +81,6 @@
 					seatsStr += ', ' + data.seats[item]
 				}
 				$('#seats').text(seatsStr);
-
-				//delays for a bit to allow values to populate
-				setTimeout(rollDown(600), 600)
 			})
 		}
 
@@ -92,14 +92,14 @@
 				//Hides the information boxes so that no one sees me load if it's been opened already. :) Defined above.
 					//Check to see if it's visible
 					if (($('#houseDetails').is(':visible'))){
-					rollUp(600);
+					rollToggle(600);
 					}
 				//grabs the image location from the box we clicked on.
 				var sigilLocation = ($(this).children('img').attr('src'));
 
 				//waits until the page has loaded before trying to assign scripts to things, then...
 				//Starts the helper function (declared above) to replace all the values
-				setTimeout(301, callTheBanners($(this).attr("idx"), sigilLocation))
+				setTimeout(601, callTheBanners($(this).attr("idx"), sigilLocation))
 				rollToggle(800);
 			})
 		})
@@ -153,7 +153,7 @@
 					<td class="rightT" id='lord'></td>
 				</tr>
 				<tr>
-					<td class='rightT' id='title'></td>
+					<td></td><td class='rightT' id='title'></td>
 				</tr>
 				<!-- Seat of power -->
 				<tr>

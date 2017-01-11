@@ -1,0 +1,57 @@
+<html>
+  <head>
+   <title>Dojo Survey</title>
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ 		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  </head>
+  <body>
+    <div id='wrapper'>
+      <form action='/results' method='post'>
+        <table>
+          <tbody>
+            <tr>
+              <td>Your Name: </td>
+              <td><input type='text' name='name'></td>
+            </tr>
+            <tr>
+              <td><label for="location">Dojo Location: </label></td>
+              <td>
+                <select name="location" id="location" class="drop">
+                  <option selected="selected">Seattle</option>
+                  <option>Los Angeles</option>
+                  <option>Mars</option>
+                  <option>New York City</option>
+                  <option>Right behind you</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="language">Favorite Language: </label></td>
+              <td>
+                <select name="language" id="language" class="drop">
+                  <option>C#</option>
+                  <option>Python</option>
+                  <option>JavaScript</option>
+                  <option>HTML</option>
+                  <option selected="selected">Clojure</option>
+                  <option>Dutch</option>
+                </select>
+            </td>
+            </tr>
+            <tr>
+              <td>
+                Comment (optional):
+              </td>
+              <td>
+                <textarea name="comment">Feel free to speak your mind...</textarea>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <input type='submit' value='button' id='button'>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,3 +1,10 @@
+<!-- TO DO: 1/7/17
+	finish collision detection in moveEnemies()
+	Split moveEnemies()'s section on bullets to it's only spot
+	add boom(), which will add am explosion sprite for half a second.
+	Implement collisions with planes
+	Add movement to planes -->
+
 <html>
 <head>
 	<title>1942 Game</title>
@@ -104,6 +111,9 @@
 				enemies[i].x = Math.random()*490+10;
 			}
 		}
+	}
+
+	function moveBullets(){
 		//Moves each bullet
 		for(var b = 0; b < bulletLocker.length; b++){
 			//Updates the location of each bullet, including the player's
@@ -111,10 +121,19 @@
 			//Removes out of bounds bullets
 			if(bulletLocker[b].y > 550 || bulletLocker[b].y < 0){
 				bulletLocker.splice(b, 1);
+				break;
+			}
+			//checks for collisions
+			for (var p = 0; p < enemies.length; p++){
+				if( (Math.abs(bulletLocker[b].x - enemies[p].x) < 10) && (Math.abs(bulletLocker[b].y - enemies[p].y) < 10) ){
+					console.log('Bonk!');
+					boom(enemies[p].x, enemies[p].y, 3)
+					bulletLocker.splice(b,1);
+					enemies.splice(p,1);
+				}
 			}
 		}
 	}
-
 
 	//Updates the hero's location
 	function displayHero(){
@@ -149,30 +168,8 @@
 		displayHero();
 	}
 
-	//Causes the enemies and bullets to be removed (replaced with an explosion) if they collide
-	function collisions(){
-		//For each object in enemies
-		for(var i = 0; i < enemies.length; i++){
-			//Look at each bullet
-			for(var j = 0; j < bulletLocker.length; i++){
-				//If they are in the same place,
-				console.log(enemies[i].x + ' = Enemy X Postion');
-				console.log(bulletLocker[j].x + ' = Bullet X Position')
-				if( (bulletLocker[j].y === enemies[i].y) ){
-// && (bulletLocker[j].y === enemies[i].y
-					//Spawn an explosion
-					// boom(enemies[i].x,enemies[i].y,3);
-					//Remove the enemy
-					// enemies.splice(i,1);
-					//remove the bullet
-					// bulletLocker.splice(j,1);
-				}
-			}
-		}
-	}
-
 	function boom(x,y,t){
-
+		//creates an explosion sprite that 
 	}
 
 	displayHero();
@@ -180,11 +177,12 @@
 	function gameLoop(){
 		displayHero();
 		moveEnemies();
+		moveBullets();
 		displayEnemies();
-		collisions();
+		// collisions();
 	}
 
-setInterval(gameLoop, 500);
+setInterval(gameLoop, 100);
 
 </script>
 
