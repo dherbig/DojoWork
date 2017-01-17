@@ -1,0 +1,6 @@
+SELECT * FROM clients;
+INSERT INTO clients (first_name, last_name, email, joined_datetime) VALUES('Munch', 'Lunchmeat', 'oscar.meyer@yumyum.com', NOW());
+UPDATE clients SET email = 'chairmanrotflmao@4chan.com' WHERE last_name = 'Lunchmeat'
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM `lead_gen_business`.`clients` WHERE `last_name` = 'Lunchmeat'

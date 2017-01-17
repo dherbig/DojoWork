@@ -7,6 +7,13 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
   <body>
+    {% with messages = get_flashed_messages() %}
+	    {% if messages %}
+	      {% for message in messages %}
+	        <p>{{message}}</p>
+	      {% endfor %}
+	    {% endif %}
+	  {% endwith %}
     <div id='wrapper'>
       <form action='/results' method='post'>
         <table>

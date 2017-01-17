@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	{% if color == 'team' %}
+		<img src="{{ url_for('static', filename='imgs/tmnt.png') }}">
+	{% elif color == 'blue' %}
+		<img src="{{ url_for('static', filename='imgs/leonardo.jpg') }}">
+	{% elif color == 'orange' %}
+		<img src="{{ url_for('static', filename='imgs/michelangelo.jpg') }}">
+	{% elif color == 'red' %}
+		<img src="{{ url_for('static', filename='imgs/raphael.jpg') }}">
+	{% elif color == 'purple' %}
+		<img src="{{ url_for('static', filename='imgs/donatello.jpg') }}">
+	{% else %}
+		<img src="{{ url_for('static', filename='imgs/notapril.jpg') }}">
+	{% endif %}
+</body>
+</html>

@@ -1,0 +1,39 @@
+* {
+	margin: 10px;
+	padding: 0px;
+}
+body {
+	padding: 30px;
+}
+
+#wallet *{
+	display: inline;
+}
+
+.option {
+	display: inline-block;
+	border: 5px solid black;
+	text-align: center;
+	padding: 20px;
+	width: 200px;
+	margin: 10px auto;
+}
+.option * {
+	margin-bottom: 10px;
+}
+.option input {
+	padding: 5px;
+}
+
+#activites {
+	width: 100%;
+	overflow: scroll;
+}
+
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}
