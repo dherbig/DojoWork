@@ -9,12 +9,21 @@
 <body>
 	<div id="wrapper">
 		<div id="yayBox">
-			<p>The email address you entered {{lastEmail}} is a VALID email address! Thank you!</p>
+			<p>The email address you entered {{ lastEmail }} is a VALID email address! Thank you!</p>
 		</div>
 		<div id="results">
 			<h1>Email Addresses Entered:</h1>
 		</div>
-
+		<div>
+			<p>
+				{% for email in emailList %}
+					<p>
+						{{ email['email'] }}
+						{{ email['created_at'] }}
+					</p>
+				{% endfor %}
+			</p>
+		</div>
 	</div>
 </body>
 </html>

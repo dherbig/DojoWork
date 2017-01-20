@@ -1,0 +1,16 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#friendList {
+	display: inline-block;
+	width: 49%;
+	overflow-y: scroll;
+}
+
+#addBox {
+	display: inline-block;
+	width: 49%;
+	vertical-align: top;
+}

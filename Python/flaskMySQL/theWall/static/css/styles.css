@@ -1,0 +1,29 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#header {
+	display: inline-block;
+	border-bottom: 5px solid black;
+}
+#status {
+	display: inline;
+	width: 100%;
+}
+#status *{
+	display: inline;
+}
+#flash {
+	margin: 0px 0px 0px auto;
+	display: inline;
+	text-align: right;
+	margin-left: 100px;
+}
+
+#commentList {
+	margin-left: 30px;
+}
+.commentTimeStamp{
+	font-size: .75em;
+}

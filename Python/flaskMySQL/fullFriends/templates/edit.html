@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	{{ friend }}
+	<h2>Edit {{ friend.first_name}} {{ friend.last_name }}, Professional {{ friend.occupation }}</h2>
+	<form action='/friends/{{ friend.id }}' method='POST'>
+		<label for="first_name">First Name:  <input type="text" name="first_name" id="first_name"></label>
+		<br>
+		<label for="last_name">Last Name:  <input type="text" name="last_name" id="last_name"></label>
+		<br>
+		<label for="occupation">Occupation:  <input type="text" name="occupation" id="occupation"></label>
+		<br>
+		<input type="submit" value="Save Changes">
+	</form>
+</body>
+</html>

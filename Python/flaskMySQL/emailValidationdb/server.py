@@ -26,10 +26,15 @@ def collect():
     data = {
         'email': request.form['email']
     }
-    mysql.query_db(query, data)
-    if error >0:
-        return render_template('success.html', lastEmail=request.form['email'])
+    if error < 1:
+        mysql.query_db(query, data)
+        return redirect('/success')
     else:
         return redirect('/')
 
+@app.route('/success')
+def horray():
+        query2 = "SELECT * FROM emails"
+        emails = mysql.query_db(query2)
+        return render_template('success.html', lastEmail = mysql.query_db('SELECT email FROM emails ORDER BY email DESC LIMIT 1;')[0]['email'], emailList = emails)
 app.run(debug=True)

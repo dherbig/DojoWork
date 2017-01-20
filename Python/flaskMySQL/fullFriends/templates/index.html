@@ -1,0 +1,39 @@
+<html>
+<head>
+	<!-- linking a css style sheet -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+  <title>Edit your Frand!</title>
+</head>
+<body>
+	<!-- we can use the line below to see all of our data in our template -->
+	<!-- {{ all_friends }} -->
+	<h1>These are all my friends!</h1>
+	<div id='friendList'>
+		<!-- with all the data we can then construct a more structured output -->
+		{% for friend in all_friends: %}
+		  <p>ID: {{ friend['id'] }}</p>
+		  <p>First Name:  {{ friend['first_name'] }}</p>
+		  <p>Last Name:  {{ friend['last_name'] }}</p>
+			<p>Occupation:  {{ friend['occupation'] }}</p>
+			<form name="edit{{ friend['id']}}" action="/friends/{{ friend['id'] }}/edit" method='GET'>
+				<input type='submit' onclick="document.pressed=this.value" value='Edit'>
+			</form>
+			<form name="delete{{ friend['id']}}" action="/friends/{{ friend['id'] }}/delete" method='POST'>
+				<input type='submit' onclick="document.pressed=this.value" value='Delete'>
+			</form>
+		  <hr>
+		{% endfor %}
+	</div>
+  <div id="addBox">
+	  <h2>Add a Friend</h2>
+	  <form action='/friends' method='POST'>
+	    <label for="first_name">First Name:  <input type="text" name="first_name" id="first_name"></label>
+			<br>
+	    <label for="last_name">Last Name:  <input type="text" name="last_name" id="last_name"></label>
+			<br>
+	    <label for="occupation">Occupation:  <input type="text" name="occupation" id="occupation"></label>
+			<br>
+	    <input type="submit" value="Add">
+	  </form>
+	</div>
+	<hr>

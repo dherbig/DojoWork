@@ -1,8 +1,10 @@
 from flask import Flask, render_template, redirect, request, flash, session
 from mysqlconnection import MySQLConnector
 import re
+from flask.ext.bcrypt import Bcrypt
 
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 mysql = MySQLConnector(app, 'login_reg')
 
 app.secret_key = "superprotected"
@@ -42,11 +44,41 @@ def register():
     if request.form['password'] != request.form['confirm']:
         error += 1
         flash ('passwords do not match!', 'Typo')
+
     if error == 0:
-        flash('Thanks for submitting your information!')
+        password=request.form['password']
+        pw_hash = bcrypt.generate_password_hash(password)
+        insert_query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at) VALUES (:first_name, :last_name, :email, :password, NOW(), NOW())"
+        data = {
+            'first_name': request.form['first_name'],
+            'last_name':  request.form['last_name'],
+            'email': request.form['email'],
+            'password': pw_hash
+        }
+        mysql.query_db(insert_query, data)
+        flash ('Success! Added to database', 'Success')
+
     return redirect('/')
 
-# @app.route('/login', methods=['POST'])
-# def login():
-#
+@app.route('/login', methods=['POST'])
+def login():
+    query = 'SELECT * FROM users WHERE email=:email'
+    data = {
+        'email': request.form['email'],
+        'password': request.form['password']
+    }
+    print ('The user provided data was ' + str(data))
+    try:
+        result = mysql.query_db(query, data)[0]
+        print ('result was ' + str(result))
+    except IndexError:
+        flash('No such account!', 'Typo')
+        return redirect('/')
+
+    if bcrypt.check_password_hash(result['password'], data['password']):
+        flash('Credentials verified. Welcome!')
+    else:
+        flash('Wrong password.  Try again.')
+    return render_template('login_info.html')
+
 app.run(debug=True)

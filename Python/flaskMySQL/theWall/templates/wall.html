@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!-- linking a css style sheet -->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+		<title>The Wall</title>
+	</head>
+	<body>
+		<div id='header'>
+			<div id='status'>
+				Logged in as {{session['user']}} - {{ session['userID'] }}- <form action="/logout"><input type='submit' value='Log Out'></form>
+			</div>
+			<div id='flash'>
+				{% with flashes = get_flashed_messages(with_categories=true) %}
+				  {% if flashes %}
+				    {% for category, flash in flashes %}
+				      {{ flash }}
+				    {% endfor %}
+				  {% endif %}
+				{% endwith %}
+			</div>
+		</div>
+		<div id="wall">
+			<div id="newMessage">
+				<h4>Post a new message</h4>
+				<form action="/newPost" method='POST'>
+					<textarea name="content" id="" cols="60" rows="5" placeholder='Everyone cares what you think.'></textarea>
+					<br>
+					<input type="submit" value="Post a message">
+				</form>
+			</div>
+			<br><br><br><hr>
+			<div id="existingContent">
+				{% if messageLog %}
+					{% for message in messageLog %}
+					<br>
+						{{message.first_name}} {{message.last_name}} said at {{message.updated_at}}:
+						<p>{{message['message']}}</p>
+						{% if message.updated_at > message.created_at %}
+							Updated: {{comment.updated_at}}
+						{% endif %}
+						{% if message.user_id == session['userID'] %}
+							<form action="/delete/message/{{message.id}}">
+								<input type="submit" value="Delete">
+							</form>
+						{% endif %}
+						<br>
+						<div id='commentList'>
+							{% for comment in commentLog %}
+								{% if message.id == comment.message_id %}
+								<p>{{ comment.first_name}} {{comment.last_name}} said:
+									<br>
+									<blockquote>
+										{{comment.comment}}
+									</blockquote>
+										<span class='commentTimeStamp'>
+											{% if comment.updated_at < comment.created_at %}
+												Created: {{comment.created_at}}
+											{% else %}
+												Updated: {{comment.updated_at}}
+											{% endif %}
+											{% if comment.user_id == session['userID'] %}
+												<form action="/delete/comment/{{comment.id}}">
+													<input type="submit" value="Delete">
+												</form>
+											{% endif %}
+										</span>
+								</p>
+								{% endif %}
+							{% endfor %}
+							<form action="/postComment/{{ message['id'] }}", method="POST">
+								<input type="text" name="comment" placeholder='Post a commnent'>
+								<input type="submit" value="Post">
+							</form>
+						</div>
+						<br>
+						<hr>
+					{% endfor %}
+				{% endif %}
+			</div>
+		</div>
+	</body>
+</html>
