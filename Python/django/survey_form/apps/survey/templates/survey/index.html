@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+		<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<title>Survey</title>
+		<script>
+	  $( function() {
+	    $( "#location" ).selectmenu();
+
+	    $( "#language" ).selectmenu();
+
+	  } );
+  </script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<form action="/process" method='POST'>
+				{% csrf_token %}
+				<p>Your Name:  <input type="text" name="name" placeholder="I'm guessing it's Frank. Am I right?"></p>
+				<p>Dojo Location:
+			    <select name="location" id="location">
+		        <option value="seattle">Seattle</option>
+		        <option value="ceruleanCity" selected='selected'>Cerulean City</option>
+		        <option value="newYork">New York City</option>
+		        <option value="sun">The Sun</option>
+					</select>
+			  </p>
+				<p>Favorite Language:
+					<select name="language" id="language">
+						<option>JavaScript</option>
+						<option>Python</option>
+						<option selected="selected">Clojure</option>
+						<option>French</option>
+						<option>Semaphore</option>
+					</select>
+				</p>
+				<p>Comment (optional):</p>
+				<textarea name="comment" id="" cols="60" rows="10"></textarea>
+				<br>
+				<br>
+				<br>
+				<br>
+				<input type="submit" value="Submit">
+			</form>
+		</div>
+	</body>
+</html>
