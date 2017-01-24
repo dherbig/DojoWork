@@ -4,7 +4,18 @@
 		6
 4.	project_name/apps/app1
 5.	project_name/apps/app1/templates/app1
+		Also add index.html
 6.	project_name/apps/app1/apps.py
 		6 & 7
 7.	project_name/project_name/settings.py
-		34
+		2, 34, 53, 71
+8.	project_name/project_name/urls.py
+		16: Add "import url, include"
+		21: Add url(r'^', include(apps.app1.urls)
+9.	Create project_name/apps/app1/urls.py
+		Add your URLS here
+10.	(Optional) project_name/project_name/urls.py
+		1
+11.	project_name/apps/app1/static/app1
+12.	project_name/project_name/wsgi.py
+		2, 14

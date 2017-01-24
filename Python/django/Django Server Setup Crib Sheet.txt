@@ -1,52 +1,17 @@
-PC:
-    > python -m virtualenv djangoEnv
-    > call djangoEnv/scripts/activate
-    (djangoEnv)>pip install django
+> python -m virtualenv djangoEnv
+> call djangoEnv/scripts/activate
 
-Create project
-    # 'main' is the project name used below
-    django-admin startproject main
+django-admin startproject main
 
-The project has been created, inspect the file & folders created as a result:
-	Folder: main
-		File: manage.py <= used to run the application.
-		Folder: main <= contains the files specific to our app.
-			File: __init__.py
-			File: settings.py
-			File: urls.py
-			File: wsgi.py
-
-A few more config items to complete the setup:
-	Navigate into the main directory that you just created.
-		> cd main
-	Make a new apps directory
-		> mkdir apps
-	Navigate into apps
-		> cd apps
-	Create an __init__.py file. This just let's Python know that this folder is viewable by Python so that # other Python modules can look in here and access the code!  [[NOTE! THIS USUALLY IS DONE AUTOMATICALLY. EXPECT AN ACCESS ERROR!]]
-	PCs: (Command Prompt) =>
-		nul> __init__.py <-- You can disregard the Access Denied message
+Navigate into the main directory that you just created.
+	> cd main
+Make a new apps directory
+	> mkdir apps
+Navigate into apps
+	> cd apps
 
 Start the new app.
 	> python ../manage.py startapp first_app
-
-The app 'first_app' has been created, lets look at the updated file/folder structure:
-	Folder: main
-			Folder: apps <= created by our steps above
-			File: __init__.py <= created by our steps above
-			Folder: first_app <= created as a result to the call to 'startapp'
-					File: __init__.py
-					File: admin.py
-					File: apps.py
-					File: models.py <= The 'M' in MVC
-					File: tests.py
-					File: views.py <= The CONTROLLER in our MVC pattern
-			File: manage.py <= used to run the application.
-			Folder: main <= contains the files specific to our app.
-					File: __init__.py
-					File: settings.py
-					File: urls.py
-					File: wsgi.py
 
 Open the settings.py file an add a line to your INSTALLED_APPS:
 
@@ -68,26 +33,7 @@ Open the urls.py file, add the line to import include and add a line to include 
     url(r'^', include('apps.first_app.urls')) # And now we use include to pull in our first_app.urls...
     ]
 
-
-Now, create the urls.py file in our 'first_app' folder so that the final file/folder structure looks like this:
-
-	Folder: main
-		Folder: apps <= created by our steps above
-		File: __init__.py <= created by our steps above
-		Folder: first_app <= created as a result to the call to 'startapp'
-			File: __init__.py
-			File: admin.py
-			File: apps.py
-			File: models.py <= The 'M' in MVC
-			File: tests.py
-			File: views.py <= The CONTROLLER in our MVC pattern
-			urls.py <= the file that will handle the routes of our app
-		File: manage.py <= used to run the application.
-		Folder: main <= contains the files specific to our app.
-			File: __init__.py
-			File: settings.py
-			File: urls.py
-			File: wsgi.py
+Now, create the urls.py file in our 'first_app' folder
 
 Add some routes to our urls.py file!
 In Django we set up our routes this way:

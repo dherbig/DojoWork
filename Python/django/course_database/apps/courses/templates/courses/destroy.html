@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Are you sure you want to delete the following course?</h1>
+	<table>
+		<tr>
+			<td>Name:</td>
+			<td>{{courseTitle}}</td>
+		</tr>
+		<tr>
+			<td>Description:</td>
+			<td>{{courseDescription}}</td>
+		</tr>
+	</table>
+	<form action="/"><input type="submit" value="No"></form>
+	<form action="/delete/{{courseId}}"><input type="submit" value="Yes! I want to delete this"></form>
+</body>
+</html>

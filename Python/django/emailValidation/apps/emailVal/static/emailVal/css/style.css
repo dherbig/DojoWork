@@ -1,0 +1,11 @@
+#warning{
+	color: white;
+	background-color: red;
+}
+
+.hidden {
+	visibility: hidden;
+}
+.visible {
+	visibility: visible;
+}

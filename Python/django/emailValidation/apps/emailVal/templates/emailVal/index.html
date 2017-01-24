@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Email Validation</title>
+	</head>
+	<body>
+		  {% if errors %}
+			<div id="warning">
+		  		<h1>Email is not Valid!</h1>
+		  	</div>
+		  {% endif %}
+
+		<form action="/submit" method="POST">
+			{% csrf_token %}
+			Email Address:  <input type="text" name="address" id="">  <input type="submit" value="Submit"></form>
+	</body>
+</html>

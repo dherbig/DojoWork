@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<div id="yay"></div>
+	<h1>Email Addresses Entered:</h1>
+	<table>
+		<thead>
+			<td>Email Address:</td>
+			<td>Date Added:</td>
+		</thead>
+		{% for email in emailList %}
+			<tr>
+				<td>{{email.email}}</td>
+				<td>{{email.created_at}}</td>
+			</tr>
+		{% endfor %}
+	</table>
+</body>
+</html>
