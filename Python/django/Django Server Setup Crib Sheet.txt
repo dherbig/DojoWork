@@ -9,7 +9,8 @@ Make a new apps directory
 	> mkdir apps
 Navigate into apps
 	> cd apps
-
+Create an __init__.py file in apps
+	nul> __init__.py <-- You can disregard the Access Denied message
 Start the new app.
 	> python ../manage.py startapp first_app
 

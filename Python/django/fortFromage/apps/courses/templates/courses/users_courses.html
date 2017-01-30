@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<form action="{% url 'login:users_courses' %}" method='POST'>
+			{% csrf_token %}
+			<fieldset>
+				<legend>Join a class</legend>
+				<h5>Student</h5>
+				<select name="user_id">
+					{% for user in userList %}
+						<option value="{{user.id}}">{{user.last_name}}, {{user.first_name}}</option>
+					{% endfor %}
+				</select>
+				<h5>Courses</h5>
+				<select name="course_id" id="">
+					{% for course in courseList %}
+						<option value="{{course.id}}">{{course.title}}</option>
+					{% endfor %}
+				</select>
+				<input type="submit" value="Add User to Course">
+			</fieldset>
+		</form>
+		<div>
+			<h1>Courses</h1>
+			<table>
+				<thead>
+					<td>Course ID</td>
+					<td>Title</td>
+					<td>Number of Users</td>
+				</thead>
+				{% for course in courseList %}
+					<tr>
+						<td>{{course.id}}</td>
+						<td>{{course.title}}</td>
+
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+		<a href="{% url 'login:index' %}">Return Home</a>
+	</div>
+</body>
+</html>

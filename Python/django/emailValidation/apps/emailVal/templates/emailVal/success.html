@@ -7,17 +7,22 @@
 	<title>Document</title>
 </head>
 <body>
+
 	<div id="yay"></div>
 	<h1>Email Addresses Entered:</h1>
 	<table>
 		<thead>
 			<td>Email Address:</td>
 			<td>Date Added:</td>
+			<td>Action:</td>
 		</thead>
 		{% for email in emailList %}
 			<tr>
-				<td>{{email.email}}</td>
+				<td>{{email.address}}</td>
 				<td>{{email.created_at}}</td>
+				<td>
+					<form action="/delete/{{email.id}}" method='GET'><input type="hidden" name="id" value={{email.id}}><input type="submit" value="Delete"></form>
+				</td>
 			</tr>
 		{% endfor %}
 	</table>
