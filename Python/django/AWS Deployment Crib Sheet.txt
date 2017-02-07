@@ -1,3 +1,6 @@
+http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-django.html
+
+
 AWS Instructions
 
 Go to AWS.
@@ -8,7 +11,7 @@ Choose an AMI (look for free things)
 
 Go to Configure Security Group
 	Add 2 rules: HTTP and HTTPS, and make their 'source' = Anywhere.
-	Change teh SSH source to My IP
+	Change the SSH source to My IP
 	Review and Launch
 
 Launch
@@ -22,30 +25,12 @@ Click "Connect" and follow the commands to get into your server.  Use Git Bash.
 	ssh -i "AWSrepo.pem" ubuntu@ec2-35-167-67-31.us-west-2.compute.amazonaws.com
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Go back to the EC2 dashboard.
 	On left bar -> Instances
 	Name your server!
 	Find / copy the IPv4 Public IP
+
+DO THIS NOW TO AVOID USING VIM LATER
 **	Go to the settings.py of the program to put up there
 	Paste IPv4 address into 'ALLOWED_HOSTS = []' in quotes
 	Paste the following into the bottom of the file:
@@ -53,46 +38,54 @@ Go back to the EC2 dashboard.
 	OPTIONAL:
 		Set DEBUG to False to stop the debug vomit
 
-In CMD / Bash:
-	go to the file directory you want:
-		git init
-		git add README.md
-		git commit -m "first commit"
-		git remote add origin https://github.com/dherbig/AWSrepo.git    //Or whatever it is
-		git push -u origin master
-
-Navigate to the root folder (make sure your environment is on!!):
+Navigate to the project's root folder (make sure your environment is on!!):
 	Make a txt file with a list of all your site's dependencies:
-		pip freeze > requirements.txt
+	pip freeze > requirements.txt
+In Bash:
+	go to the file directory you want:
+		nul>.gitignore     --> Allows you to specifiy files for git not to upload. Optional.
+			Add the lines:
+				*.pyc
+				venv/
+	Start a new git:
+		git init
+		git add README.md //Optional
+		git commit -m "first commit"
+		git remote add origin https://github.com/dherbig/beltRepo.git    //Or whatever it is
+		git push -u origin master
 
 Open Git Bash
 	go to AWS page, select the server you want, and click "Connect"
 	In Bash, navigate to the location of the .pem file
+		chmod 400 beltRepo.pem
+
 	follow instructions on AWS page, type in "ssh -i......[copy the rest]"
-	If asked, say "Yes"
+	When asked, say "Yes"
+
+This puts you in control of the server.
 
 Type the following commands:
 	//Update the server
-	sudo apt-get updates
+		sudo apt-get updates
 	//Install python etc
-	sudo apt-get install python-pip python-dev nginx git
+		sudo apt-get install python-pip python-dev nginx git
 	//Update again, so the server knows that you've been installing things
-	sudo apt-get update
+		sudo apt-get update
 	//install virtualEnv
-	sudo pip install virtualenv
+		sudo pip install virtualenv
 	//Clone your project from Git Hub
-	git clone [[URL GOES HERE]]
+		git clone [[URL GOES HERE]]
 	//go into the repo
-	cd repoName
+		cd repoName
 	//Look at what's there and make sure manage.py is in
-	ls
+		ls
 	//Make a new virtual env
-	virtualenv venv
-	source venv/bin/activate
+		virtualenv venv
+		source venv/bin/activate
 	//Install all your dependencies
-	pip install -r requirements.txt
-	pip install django bcrypt django-extensions
-	pip install gunicorn
+		pip install -r requirements.txt
+		pip install django bcrypt django-extensions
+		pip install gunicorn
 
 Navigate into the main project directory (project_name/project_name/), where settings.py hangs out, and edit settings
 	cd project_name
@@ -105,8 +98,8 @@ Navigate into the main project directory (project_name/project_name/), where set
 		# add the line below to the bottom of the file
 		STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
-	//Go back to root folder	 to save
-	python manage.py collectstatic #say yes
+	//Go back to root folder to save
+		python manage.py collectstatic #say yes
 
 Test Gunicorn by having it look at the project's wsgi.py file:
 	gunicorn --bind 0.0.0.0:8000 {{project_name}}.wsgi:application
@@ -115,10 +108,12 @@ Deactivate your venv
 	deactivate
 Set up Gunicorn to run as a service
 	//Make a new file
-	sudo vim /etc/systemd/system/gunicorn.service
+		sudo vim /etc/systemd/system/gunicorn.service
 	//Literally type 'i'
-	i
-	//then copy paste this into vim
+		i
+
+
+//then copy paste this into vim CHANGE NAMES BEFORE COPYING
 [Unit]
 Description=gunicorn daemon
 After=network.target
@@ -134,14 +129,15 @@ WantedBy=multi-user.target
 // hit esc to get out of the editor, then ':/wq'
 
 //Configure gunicorn to start on boot
-sudo systemctl daemon-reload
-sudo systemctl start gunicorn
-sudo systemctl enable gunicorn
+	sudo systemctl daemon-reload
+	sudo systemctl start gunicorn
+	sudo systemctl enable gunicorn
 
 //Last thing to edit:
-sudo vim /etc/nginx/sites-available/{{projectName}}
+	sudo vim /etc/nginx/sites-available/{{projectName}}
 
 Add the following to your new document, editing what’s inside curly braces {{}}:
+EDIT BEFORE COPYING!!
 
 server {
   listen 80;

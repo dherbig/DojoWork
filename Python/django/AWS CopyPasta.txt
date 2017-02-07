@@ -1,0 +1,85 @@
+THIS HOLDS ONLY COMMANDS FOR AWS EC2 SETUP.
+travelBuddy = the name of your project
+beltRepo = the name of your repo
+52.27.79.250 = the public IP of the server
+
+Find and replace these three variables and you should be good to go.
+
+pip freeze > requirements.txt
+
+git init
+git add README.md
+git add .
+git commit -m "first commit"
+git remote add origin https://github.com/dherbig/beltRepo.git
+git push -u origin master
+
+chmod 400 beltRepo.pem
+
+sudo apt-get update
+sudo apt-get install python-pip python-dev nginx git
+sudo apt-get update
+sudo pip install virtualenv
+git clone https://github.com/dherbig/beltRepo.git
+cd beltRepo
+ls
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+pip install django bcrypt django-extensions
+pip install gunicorn
+
+cd project_name
+sudo vim settings.py
+	# Inside settings.py
+	# modify these lines
+	DEBUG = False
+	ALLOWED_HOSTS = ['52.27.79.250']
+	# add the line below to the bottom of the file
+	STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+cd ..
+python manage.py collectstatic #say yes
+
+gunicorn --bind 0.0.0.0:8000 travelBuddy.wsgi:application
+deactivate
+sudo vim /etc/systemd/system/gunicorn.service
+i
+
+[Unit]
+Description=gunicorn daemon
+After=network.target
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/beltRepo
+ExecStart=/home/ubuntu/beltRepo/venv/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/beltRepo/travelBuddy.sock travelBuddy.wsgi:application
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl daemon-reload
+sudo systemctl start gunicorn
+sudo systemctl enable gunicorn
+
+sudo vim /etc/nginx/sites-available/travelBuddy
+
+server {
+  listen 80;
+  server_name 52.27.79.250;
+  location = /favicon.ico { access_log off; log_not_found off; }
+  location /static/ {
+      root /home/ubuntu/beltRepo;
+  }
+  location / {
+      include proxy_params;
+      proxy_pass http://unix:/home/ubuntu/beltRepo/travelBuddy.sock;
+  }
+}
+
+Esc, ":/wq", enter
+
+ubuntu@54.162.31.253:~$ sudo ln -s /etc/nginx/sites-available/travelBuddy /etc/nginx/sites-enabled
+ubuntu@54.162.31.253:~$ sudo nginx -t
+
+sudo rm /etc/nginx/sites-enabled/default
+sudo service nginx restart

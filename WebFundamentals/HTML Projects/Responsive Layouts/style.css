@@ -1,0 +1,29 @@
+.nav a {
+	background: gray;
+	display: inline;
+	background-color: gray;
+	padding: 4px;
+}
+
+#header {
+	background: gray;
+	padding: 20px;
+}
+
+.text {
+	display: inline-block;
+	vertical-align: top;
+}
+
+
+@media only screen and (min-width: 1024px) {
+	.text { width: 25%; }
+}
+@media only screen and (min-width: 481px) {
+
+}
+@media only screen and (max-width: 480px) {
+	#nav { visibility: hidden; }
+	.top { width: 33.33333%; }
+	.bottom { width: 100%; }
+}
